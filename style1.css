@@ -1,0 +1,588 @@
+/* === GENERAL STYLES === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+/* Container */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px; /* Padding on sides, 0 on top/bottom */
+}
+
+/* Main Content Wrapper */
+main {
+    padding-top: 70px; /* Offset for the fixed navbar */
+}
+
+/* === STICKY NAVIGATION BAR === */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    z-index: 1000;
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.nav-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #128C7E;
+    text-decoration: none;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    align-items: center; /* Vertically center nav items */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #13547A;
+}
+
+/* "View Resume" Button in Nav */
+.nav-resume-btn {
+    background-color: #128C7E;
+    color: white !important; /* !important to override default link color */
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-resume-btn:hover {
+    background-color: #13547A;
+    transform: translateY(-2px);
+}
+
+/* === HERO SECTION === */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    background: linear-gradient(135deg, #13547A, #128C7E);
+    color: white;
+    padding: 0 20px;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+.hero .profession {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.hero .tagline {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* === HERO ANIMATIONS === */
+@keyframes slideFromLeft {
+    0% { transform: translateX(-100%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideFromRight {
+    0% { transform: translateX(100%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+.slide-left {
+    display: inline-block;
+    animation: slideFromLeft 1s ease-out 0.2s forwards;
+    opacity: 0;
+}
+
+.slide-right {
+    display: inline-block;
+    animation: slideFromRight 1s ease-out 0.2s forwards;
+    opacity: 0;
+}
+
+/* === SCROLL ANIMATIONS === */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Class to apply animation */
+.fade-in-up {
+    opacity: 0; /* Hidden by default */
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Staggered delays for each section */
+.about { animation-delay: 0.1s; }
+.education { animation-delay: 0.2s; }
+.experience { animation-delay: 0.3s; }
+.projects { animation-delay: 0.4s; }
+.grid-container:nth-of-type(1) { animation-delay: 0.5s; }
+.grid-container:nth-of-type(2) { animation-delay: 0.6s; }
+.contact { animation-delay: 0.7s; }
+
+
+/* === ABOUT ME SECTION (Overlapping Card) === */
+.about {
+    background: #ffffff;
+    padding: 40px 30px;
+    border-radius: 15px;
+    margin-top: -80px; /* The overlap */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 2;
+    margin-bottom: 30px; /* Margin for the section */
+    
+    /* MODIFIED: Added transition */
+    transition: background-position 0.8s ease-out;
+}
+
+.about h2 {
+    font-size: 1.8rem;
+    color: #13547A;
+    margin-bottom: 20px;
+    text-align: left;
+    border-bottom: 2px solid #e0f2f1;
+    padding-bottom: 10px;
+}
+
+/* Career Objective Style */
+.career-objective {
+    background: #f8f9fa;
+    border-left: 5px solid #128C7E;
+    margin: 0 0 20px 0;
+    padding: 15px 20px;
+    font-style: italic;
+    color: #333;
+    font-size: 1.05rem;
+}
+
+.about p {
+    font-size: 1.05rem;
+    margin-bottom: 15px;
+}
+
+/* Main Call-to-Action Button Style ("Download Resume") */
+.btn {
+    display: inline-flex; /* Use flex to align icon and text */
+    align-items: center;
+    gap: 8px; /* Space between icon and text */
+    text-decoration: none;
+    background-color: #128C7E;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    margin-top: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #13547A;
+    transform: translateY(-2px);
+    color: white;
+}
+
+
+/* === GENERAL CONTENT CARD (Used for all other sections) === */
+.content-card {
+    background: #ffffff;
+    padding: 25px; /* Tighter padding */
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.07);
+    margin-bottom: 30px; /* Standard margin for full-width cards */
+    
+    /* MODIFIED: Added transition */
+    transition: background-position 0.8s ease-out;
+}
+
+/* === PROFESSIONAL HEADINGS === */
+.content-card h2 {
+    font-size: 1.6rem; /* Reduced size */
+    text-align: left;
+    margin-bottom: 20px;
+    font-weight: 700;
+    color: #13547A;
+    border-bottom: 2px solid #e0f2f1;
+    padding-bottom: 10px;
+}
+
+/* === EDUCATION SECTION === */
+.education-entry {
+    margin-bottom: 20px;
+}
+.education-entry:last-child {
+    margin-bottom: 0;
+}
+.education-entry h3 {
+    font-size: 1.2rem;
+    color: #128C7E;
+    margin-bottom: 2px;
+}
+.education-entry .institution {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #333;
+}
+.education-entry .date {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #555;
+    margin-bottom: 10px;
+}
+.education-entry ul {
+    margin-left: 20px;
+}
+
+/* === GRID CONTAINER === */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-bottom: 30px;
+    padding-left: 20px; /* Ensure side padding matches */
+    padding-right: 20px;
+}
+
+/* Hover effect for grid cards */
+.grid-container .content-card {
+    margin-bottom: 0;
+    
+    /* MODIFIED: Combined all transitions */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-position 0.8s ease-out;
+}
+.grid-container .content-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+
+/* === SKILLS & TOOLS (Pill Design) === */
+.skill-pills {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Tighter gap */
+}
+
+.skill-pills li {
+    background: #f1f3f5; /* Light grey */
+    color: #495057; /* Dark grey */
+    padding: 5px 12px; /* Tighter padding */
+    border-radius: 15px;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+/* === EXPERIENCE SECTION === */
+.experience-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-left: 5px solid #128C7E;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+.experience-card:last-child {
+    margin-bottom: 0;
+}
+
+.experience-card h3 {
+    font-size: 1.2rem; /* Tighter */
+    color: #333;
+    margin-bottom: 5px;
+}
+.experience-card p {
+    font-style: italic;
+    color: #555;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+.experience-card ul {
+    margin-left: 20px;
+}
+
+/* === PROJECTS SECTION === */
+.project-card {
+    background: #f8f9fa;
+    border-left: 5px solid #128C7E;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.project-card:last-child {
+    margin-bottom: 0;
+}
+.project-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.project-card h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* === CERTIFICATIONS & ACHIEVEMENTS (List) === */
+.certifications ul, .achievements ul {
+    list-style-type: square;
+    margin-left: 20px;
+    font-size: 1rem; /* Tighter */
+}
+.certifications li, .achievements li {
+    margin-bottom: 8px; /* Tighter */
+}
+
+/* === CONTACT SECTION === */
+.contact {
+    text-align: left;
+}
+.contact p {
+    font-size: 1.05rem;
+    margin-bottom: 20px;
+}
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+}
+.contact-links a {
+    display: inline-flex; /* Align icon and text */
+    align-items: center;
+    gap: 10px; /* Space between icon and text */
+    text-decoration: none;
+    font-size: 1.05rem;
+    color: #128C7E;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+.contact-links a:hover {
+    color: #13547A;
+}
+.contact-links i {
+    color: #13547A; /* Icon color */
+    font-size: 1.1rem;
+    width: 20px; /* Give icons a fixed width */
+    text-align: center;
+}
+
+/* === FOOTER === */
+footer {
+    text-align: center;
+    padding: 30px;
+    margin-top: 30px;
+    background: linear-gradient(135deg, #13547A, #128C7E);
+    color: #f8f9fa;
+}
+
+/*
+ *
+ * === MODIFIED: HOVER ANIMATION (FOR ALL CARDS) ===
+ *
+ */
+
+/* MODIFIED: Selectors now include all cards */
+.about,
+.education,
+.experience,
+.projects,
+.contact,
+.grid-container .content-card {
+    /* This gradient is much larger than the card and combines white with
+      light shades of our theme colors.
+    */
+    background: linear-gradient(135deg, #ffffff 30%, #e6f0fa 60%, #e0f2f1 80%, #ffffff 100%);
+    
+    /* Set the size to be much larger than the element.
+      This is the key to the shimmer effect.
+    */
+    background-size: 400% 400%;
+    
+    /* Set the starting position of the gradient */
+    background-position: 100% 100%;
+    
+    /* MODIFIED: Removed transition from here. 
+       It's now on the individual element rules.
+    */
+}
+
+/* MODIFIED: Selectors now include all cards */
+.about:hover,
+.education:hover,
+.experience:hover,
+.projects:hover,
+.contact:hover,
+.grid-container .content-card:hover {
+    /* On hover, we move the gradient to a new position,
+      causing the colors to "shimmer" across the card.
+    */
+    background-position: 0% 0%;
+}
+
+
+/* === RESPONSIVE & MOBILE MENU === */
+.hamburger-menu, .mobile-nav {
+    display: none; /* Hidden on desktop */
+}
+
+@media (max-width: 768px) {
+    /* Hero */
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    .hero .profession {
+        font-size: 1.2rem;
+    }
+    
+    /* Hide desktop nav links */
+    nav ul {
+        display: none;
+    }
+    
+    /* Show Hamburger Menu */
+    .hamburger-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        z-index: 1002;
+    }
+    .hamburger-menu div {
+        width: 25px;
+        height: 3px;
+        background-color: #13547A;
+        transition: all 0.3s ease;
+    }
+    
+    /* Hamburger "X" animation */
+    .hamburger-menu.active div:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    .hamburger-menu.active div:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger-menu.active div:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    /* Mobile Nav Menu Styles */
+    .mobile-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        background: #ffffff;
+        position: fixed;
+        top: 67px; /* Below navbar */
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+        z-index: 1001;
+        transform: translateY(-150%);
+        transition: transform 0.4s ease-in-out;
+    }
+    .mobile-nav.active {
+        transform: translateY(0);
+    }
+    .mobile-nav a {
+        text-decoration: none;
+        color: #13547A;
+        font-size: 1.2rem;
+        font-weight: 600;
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+    }
+    .mobile-nav a.nav-resume-btn {
+        padding: 10px;
+        font-size: 1.1rem;
+    }
+
+    /* 2-Column Grid: Stack on mobile */
+    .grid-container {
+        grid-template-columns: 1fr; /* Stack columns */
+        gap: 30px; /* Add gap between stacked items */
+        margin-bottom: 30px;
+    }
+}
+/* DELETE THIS OLD RULE */
+.nav-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #128C7E;
+    text-decoration: none;
+}
+/* ADD THESE NEW RULES */
+
+/* This styles the new <a> tag that groups the image and text */
+.nav-logo-group {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 10px; /* Adds space between image and text */
+}
+
+/* This styles your image */
+.nav-logo-img {
+    height: 150px;          /* Sets a fixed height */
+    width: 160px;           /* Sets a fixed width */
+    border-radius: 50%;    /* Makes it circular */
+    object-fit: cover;     /* Prevents stretching */
+}
+
+/* This styles the text "Atul Tiwari" */
+.nav-logo-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #128C7E;
+}
